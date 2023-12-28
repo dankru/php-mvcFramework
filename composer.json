@@ -1,0 +1,20 @@
+{
+    "name": "user/mvc_framework",
+    "autoload": {
+        "psr-4": {
+            "User\\MvcFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pirogov",
+            "email": "pirogovde@mer.ci.nsu.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
