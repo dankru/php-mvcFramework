@@ -14,7 +14,7 @@ class Controller extends BaseController
         ];
         return $this->render('home', $params);
     }
-    public function homePost(Request $request) {
+    public function handleHome(Request $request) {
         $body = $request->getBody();
         var_dump($body);
         return "post";
