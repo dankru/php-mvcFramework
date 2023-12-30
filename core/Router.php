@@ -34,7 +34,7 @@ class Router
         if (is_array($callback)) {
             $callback[0] = new $callback[0];
         }
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request);
     }
     public function renderView($view, $params = []) {
         $layout = $this->getLayout($view);
@@ -52,7 +52,7 @@ class Router
         foreach ($params as $key => $value) {
             $$key = $value;
         }
-        
+
         ob_start();
         include_once Application::$ROOT_DIR."/views/{$view}.php";
         return ob_get_clean();
