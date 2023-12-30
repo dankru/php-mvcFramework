@@ -1,6 +1,8 @@
 <?php
 
 namespace app\core;
+use app\controllers\Controller;
+
 class Application
 {
     public static string $ROOT_DIR;
@@ -8,6 +10,17 @@ class Application
     public Request $request;
     public Response $response;
     public static Application $app;
+    public BaseController $controller;
+
+    public function getController(): BaseController
+    {
+        return $this->controller;
+    }
+
+    public function setController(BaseController $controller): void
+    {
+        $this->controller = $controller;
+    }
 
     public function __construct($ROOT_DIR)
     {

@@ -8,6 +8,7 @@ use app\core\Request;
 class AuthController extends BaseController
 {
     public function login() {
+        $this->layout = 'auth';
         return $this->render('login');
     }
 
