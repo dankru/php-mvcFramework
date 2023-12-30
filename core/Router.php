@@ -49,9 +49,10 @@ class Router
     }
 
     protected function getContent($view, $params) {
-        echo "<pre>";
-        var_dump($params);
-        echo "<pre>";
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
+        
         ob_start();
         include_once Application::$ROOT_DIR."/views/{$view}.php";
         return ob_get_clean();
