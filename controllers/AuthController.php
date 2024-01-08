@@ -8,12 +8,14 @@ use app\models\RegisterModel;
 
 class AuthController extends BaseController
 {
-    public function login() {
+    public function login()
+    {
         $this->layout = 'auth';
         return $this->render('login');
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $registerModel = new RegisterModel();
         if ($request->isPost()) {
 
@@ -22,6 +24,7 @@ class AuthController extends BaseController
             if ($registerModel->validate() && $registerModel->register()) {
                 return 'success';
             }
+
             return $this->render('register', [
                 'model' => $registerModel
             ]);
