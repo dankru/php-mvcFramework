@@ -77,4 +77,14 @@ abstract class BaseModel
             self::RULE_UNIQUE => 'A user with this {unique} already exists'
         ];
     }
+
+    public function hasError($attribute)
+    {
+        return $this->errors[$attribute] ?? false;
+    }
+
+    public function getFirstError($attribute)
+    {
+        return $this->errors[$attribute][0] ?? false;
+    }
 }
