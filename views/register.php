@@ -1,13 +1,18 @@
 <h1>
     Регистрация
 </h1>
-
-<form action="/register" method="POST">
-    <input type="text" name="firstName" placeholder="Имя">
-    <input type="text" name="lastName" placeholder="Фамилия">
-    <input type="text" name="login" placeholder="Логин">
-    <input type="text" name="email" placeholder="@mail">
-    <input type="text" name="password" placeholder="Пароль">
-    <input type="text" name="password_confirm" placeholder="Подтвердите пароль">
-    <button type="submit">Отправить</button>
-</form>
+<?php $form = \app\core\form\Form::begin('', 'POST') ?>
+    <div class="row">
+        <div class="col">
+            <?php echo $form->field($model, 'firstName') ?>
+        </div>
+        <div class="col">
+            <?php echo $form->field($model, 'lastName') ?>
+        </div>
+    </div>
+    <?php echo $form->field($model, 'login') ?>
+    <?php echo $form->field($model, 'email') ?>
+    <?php echo $form->field($model, 'password')->passwordField() ?>
+    <?php echo $form->field($model, 'password_confirm')->passwordField() ?>
+<button type="submit">Отправить</button>
+<?php \app\core\form\Form::end() ?>
