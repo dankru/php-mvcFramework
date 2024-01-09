@@ -4,11 +4,11 @@ use app\controllers\Controller;
 use app\controllers\AuthController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 
-$ROOT_DIR = dirname(dirname(__DIR__));
+$ROOT_DIR = dirname(__DIR__);
 
 $config = [
     'db' => [
