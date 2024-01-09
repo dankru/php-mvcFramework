@@ -11,6 +11,7 @@ class Application
     public Response $response;
     public static Application $app;
     public BaseController $controller;
+    public BaseDatabase $db;
 
     public function getController(): BaseController
     {
@@ -22,13 +23,14 @@ class Application
         $this->controller = $controller;
     }
 
-    public function __construct($ROOT_DIR)
+    public function __construct($ROOT_DIR, array $config)
     {
         self::$ROOT_DIR = $ROOT_DIR;
         self::$app = $this;
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
+        $this->db = new BaseDatabase($config['db']);
     }
 
     public function run() {
