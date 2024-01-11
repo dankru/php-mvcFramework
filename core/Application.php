@@ -1,6 +1,7 @@
 <?php
 
 namespace app\core;
+
 use app\controllers\Controller;
 
 class Application
@@ -9,7 +10,9 @@ class Application
     public Router $router;
     public Request $request;
     public Response $response;
+
     public static Application $app;
+    public Session $session;
     public BaseController $controller;
     public BaseDatabase $db;
 
@@ -29,11 +32,13 @@ class Application
         self::$app = $this;
         $this->request = new Request();
         $this->response = new Response();
+        $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->db = new BaseDatabase($config['db']);
     }
 
-    public function run() {
+    public function run()
+    {
         echo $this->router->resolve();
     }
 }
