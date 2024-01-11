@@ -64,12 +64,15 @@ class BaseDatabase
     public function saveMigrations(array $migrations)
     {
         $values = implode(",", array_map(fn($m) => "('$m')", $migrations));
-        $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES 
+        $statement = $this->prepare("INSERT INTO migrations (migration) VALUES 
             $values
         ");
         $statement->execute();
     }
-
+    public function prepare($sql)
+    {
+        return $this->pdo->prepare($sql);
+    }
     protected function log($message)
     {
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
